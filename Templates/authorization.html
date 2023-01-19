@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+  <style>
+      html{
+      height: 100%
+      } 
+
+      .square{
+      width: 250px;
+      height: 200px;
+      border: 2px solid black;
+      margin: auto;
+      padding: 10px;
+      display: block;
+      border-radius: 15px;
+      }
+
+      .btn{
+        padding-left: 90px;
+      }
+
+      body{
+      min-height:100%;
+      display:flex;
+      justify-content:center;
+      align-items:center
+      }
+
+      .footer{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 90px;
+        background-color: black;
+      }
+
+      .header{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 90px;
+        background-color: black;
+      }
+  </style>
+
+</head>
+<body>
+  <div>
+    <div class='header'>
+    </div>
+      <div class="square">
+        {% for msg in get_flashed_messages() %}
+        <p> {{ msg }} </p>
+        {% endfor %}
+          <form action="" method="post">
+              {{ logform.hidden_tag() }}
+              <p>{{ logform.login.label() }} {{ logform.login() }}</p>
+              <p> {{ logform.email.label() }} {{ logform.email() }} </p>
+              <p> {{ logform.password.label() }} {{ logform.password() }} </p>
+              <p> {{ logform.remember_me.label() }} {{ logform.remember_me() }} </p>
+              <p class='btn'> {{logform.submit()}} </p>
+          </form>
+      </div>
+      <div class='footer'>
+      </div>
+  </div>
+</body>
+</html>
